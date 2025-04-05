@@ -1,0 +1,31 @@
+service: toxic-catalogo-interactivo
+
+plugins:
+    - serverless-deployment-bucket
+    - fullstack-serverless
+
+custom:
+    stage: ${opt:stage, 'prod'}
+    prefix: ${self:service}-${self:custom.stage}
+    fullstack:
+        domain: toxic-catalogo.tridensoft.com.ar
+        certificate: arn:aws:acm:us-east-1:891612558940:certificate/04a3392a-785d-41a6-b364-e98f4788e3a3
+        distributionFolder: dist
+        bucketName: catalog-bucket
+        indexDocument: index.html
+        errorDocument: error.html
+        singlePageApp: true
+        invalidationPaths:
+            - /
+        compressWebContent: true
+        minimumProtocolVersion: TLSv1.2_2018
+        priceClass: PriceClass_100
+        noConfirm: true
+
+provider:
+    name: aws
+    region: us-east-2
+    stackName: ${self:custom.prefix}-stack
+    runtime: nodejs20.x
+    deploymentBucket:
+        name: ${self:custom.prefix}-serverless
