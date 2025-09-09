@@ -8,8 +8,8 @@ custom:
     stage: ${opt:stage, 'prod'}
     prefix: ${self:service}-${self:custom.stage}
     fullstack:
-        domain: toxic-catalogo.tridensoft.com.ar
-        certificate: arn:aws:acm:us-east-1:891612558940:certificate/04a3392a-785d-41a6-b364-e98f4788e3a3
+        domain: catalogo.toxicshine.com.ar
+        certificate: arn:aws:acm:us-east-1:404318849113:certificate/2c6c9a7b-17b3-4710-8e6f-b276787d026f
         distributionFolder: dist
         bucketName: catalog-bucket
         indexDocument: index.html
@@ -24,7 +24,7 @@ custom:
 
 provider:
     name: aws
-    region: us-east-2
+    region: us-east-1
     stackName: ${self:custom.prefix}-stack
     runtime: nodejs20.x
     deploymentBucket:
