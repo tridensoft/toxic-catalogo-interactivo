@@ -1,4 +1,4 @@
-service: toxic-catalogo-interactivo
+service: toxic-catalogo
 
 plugins:
     - serverless-deployment-bucket
